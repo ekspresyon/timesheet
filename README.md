@@ -1,4 +1,5 @@
-# time_sheet
+# timesheet
+Timesheet submission and review portal
 
 ## Project setup
 ```

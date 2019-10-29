@@ -133,16 +133,12 @@ export default {
                     this.showForgotPassword = true
                 }
         },
-        //Not processing correctley at certain point
-        // Starts to record unser name and password successfully...(**->)
+        
 	    login() {
 	    	this.performingRequest = true
 
-	    	//This part of he account creation works perfectly
-		    fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {
-
-		    //(**->)...But drops process here with error that there is undefined.
-		    // This part in necessary for basically everything else to work and make the app not useless.     
+	    	
+		    fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {     
 		        this.$store.commit('setCurrentUser', user.user)
 		        this.$store.dispatch('fetchUserProfile')
 		        this.$router.push('/dashboard')
@@ -154,11 +150,16 @@ export default {
 		},
 		signup() {
 			this.performingRequest = true
-
+			
+			//Not processing correctley at certain point
+        	// Starts to record unser name and password successfully... see : Signup bug
+			//This part of he account creation works perfectly
 		    fb.auth.createUserWithEmailAndPassword(this.signupForm.email, this.signupForm.password).then(user => {
 		        this.$store.commit('setCurrentUser', user.user)
 
-		        // create user obj
+		        // create user
+		        //...But drops process here with error that there is undefined.
+		        //Signup bug : This part in necessary for basically everything else to work and make the app not useless.
 		        fb.usersCollection.doc(user.uid).set({
 		            name: this.signupForm.name,
 		            title: this.signupForm.title
