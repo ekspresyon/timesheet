@@ -107,6 +107,8 @@ export default {
 		        passwordForm: {
                     email: ''
                 },
+                //hide navigation
+                isLoginPage: false,
                 //Login for needs to be visible on lending
 		        showLoginForm: true,
 
@@ -118,6 +120,7 @@ export default {
             }
         },
     methods:{
+
     	//Show and hide forms on click
     	toggleForm(){
     		this.errorMsg = ''
@@ -139,8 +142,8 @@ export default {
 
 	    	
 		    fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {     
-		        this.$store.commit('setCurrentUser', user.user)
-		        this.$store.dispatch('fetchUserProfile')
+		        // this.$store.commit('setCurrentUser', user.user)
+		        // this.$store.dispatch('fetchUserProfile')
 		        this.$router.push('/dashboard')
 		    }).catch(err => {
 		        console.log(err)
@@ -164,7 +167,7 @@ export default {
 		            name: this.signupForm.name,
 		            title: this.signupForm.title
 		        }).then(() => {
-		            this.$store.dispatch('fetchUserProfile')
+		            // this.$store.dispatch('fetchUserProfile')
 		            this.$router.push('/dashboard')
 		        }).catch(err => {
 		            console.log(err)

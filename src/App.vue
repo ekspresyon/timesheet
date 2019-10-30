@@ -1,9 +1,21 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+	<div id="app">
+		<Navigation></Navigation>
+    	<router-view/>
+	</div>
 </template>
 
-<style lang="scss">
+<script>
+import Navigation from './components/Navigation.vue'
 
-</style>
+export default {
+	components: { 
+		Navigation 
+	}
+	// 	data() {
+ //        name: 'John Smith',
+ //        title: 'Support staff',
+ //    }
+}
+  
+</script>

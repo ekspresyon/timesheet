@@ -1,5 +1,7 @@
-# timesheet
+# timesheet - views branche 
 Timesheet submission and review portal
+Focused on the development of the apps user experiancce instead of data security.
+
 
 ## Project setup
 ```
